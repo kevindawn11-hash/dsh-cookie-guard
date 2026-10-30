@@ -46,11 +46,24 @@ desktop welcome: Web authentication failed
 
 ## 安装
 
-### 方式一：插件市场
+需要 Node.js >= 22，以及自带 desktop profile 的 DSH 版本（`0.2.1-rc.3` 及以后）。
 
-在 DSH 插件市场中安装 `dsh-cookie-guard`（上架后），重启应用。
+### 方式一：一条命令（推荐）
 
-### 方式二：手动加入 profile
+```sh
+dsh plugin --profile desktop add dsh-cookie-guard
+```
+
+执行后重启 DeepSeek Harness。社区插件市场（[dsh-plugin.org](https://dsh-plugin.org)、
+`dsh-market`）走的是同一条安装路径。
+
+### 方式二：从源码安装
+
+```sh
+dsh plugin --profile desktop add github:kevindawn11-hash/dsh-cookie-guard
+```
+
+### 方式三：手动加入 profile
 
 ```powershell
 cd $env:USERPROFILE\.dsh\profiles\desktop
@@ -60,7 +73,7 @@ pnpm add dsh-cookie-guard
 然后在同目录 `package.json` 的 `dsh.profile.bundles` 末尾追加 `"dsh-cookie-guard"`，
 重启 DeepSeek Harness。
 
-### 方式三：只清理，不装插件
+### 方式四：只清理，不装插件
 
 完全退出 DSH 后：
 

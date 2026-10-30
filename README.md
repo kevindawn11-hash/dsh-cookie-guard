@@ -50,11 +50,25 @@ both `0.2.1-rc.3` and `rc.5`.
 
 ## Install
 
-### Option 1 — marketplace
+Requires Node.js >= 22 and a DSH build that ships the desktop profile
+(`0.2.1-rc.3` and later).
 
-Install `dsh-cookie-guard` from the DSH plugin marketplace, then restart the app.
+### Option 1 — one command (recommended)
 
-### Option 2 — manual profile install
+```sh
+dsh plugin --profile desktop add dsh-cookie-guard
+```
+
+Then restart DeepSeek Harness. This is the same install path the community
+plugin markets use ([dsh-plugin.org](https://dsh-plugin.org), `dsh-market`).
+
+### Option 2 — from source
+
+```sh
+dsh plugin --profile desktop add github:kevindawn11-hash/dsh-cookie-guard
+```
+
+### Option 3 — manual profile install
 
 ```powershell
 cd $env:USERPROFILE\.dsh\profiles\desktop
@@ -64,7 +78,7 @@ pnpm add dsh-cookie-guard
 Append `"dsh-cookie-guard"` to `dsh.profile.bundles` in the same `package.json`,
 then restart DeepSeek Harness.
 
-### Option 3 — cleanup only, no plugin
+### Option 4 — cleanup only, no plugin
 
 With DSH fully closed:
 
