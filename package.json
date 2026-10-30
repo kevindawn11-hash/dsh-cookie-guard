@@ -31,6 +31,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/<your-name>/dsh-cookie-guard"
-  }
+    "url": "git+https://github.com/kevindawn11-hash/dsh-cookie-guard.git"
+  },
+  "homepage": "https://github.com/kevindawn11-hash/dsh-cookie-guard#readme",
+  "bugs": {
+    "url": "https://github.com/kevindawn11-hash/dsh-cookie-guard/issues"
+  },
+  "author": "kevindawn11-hash"
 }
