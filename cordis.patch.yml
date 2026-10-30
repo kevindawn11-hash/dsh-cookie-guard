@@ -1,0 +1,20 @@
+# dsh-cookie-guard — bundle patch layer
+#
+# 作用：收敛 Desktop Host 签发的浏览器会话 cookie 生命周期。
+#
+# 背景：`@deepseek-ai/dsh-client-connection` 的 cookie 名是
+#   "dsh-auth-" + sha256(host:port)
+# 桌面端每次启动都是随机端口（desktop-host 固定传 --port 0），因此每次启动都会
+# 新种一条 dsh-auth-* cookie，默认生命周期 30 天，且从不清理。累积到约 90 条时
+# Cookie 请求头会超过 Node 的 16KB maxHeaderSize，Host 返回 HTTP 431，Electron
+# 侧抛出 "desktop welcome: Web authentication failed"，应用无法启动。
+#
+# 把生命周期收敛到 7 天，稳态最多只会有"7 天内启动次数"条 cookie，
+# 基本不可能再触发 431；同时仍能覆盖整周不关机的会话。
+#
+# 如果希望更激进（不常驻后台的用户），可以改成 1；
+# 如果习惯长期不退出应用，可以保持 7 或调大。
+# 根治仍需上游在 Host 或 Electron 主进程里清理历史 cookie，见 docs/upstream-issue.md。
+- id: connection
+  config:
+    cookieMaxAgeDays: 7

@@ -1,0 +1,39 @@
+{
+  "name": "dsh-cookie-guard",
+  "version": "0.1.0",
+  "description": "Caps DSH desktop browser-session cookie lifetime so stale dsh-auth-* cookies can no longer overflow the request header and break startup (HTTP 431 / \"Web authentication failed\").",
+  "type": "module",
+  "main": "lib/index.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "manifestVersion": 1
+  },
+  "files": [
+    "lib/index.js",
+    "cordis.patch.yml",
+    "tools/prune-cookies.mjs",
+    "README.md",
+    "README_ZH.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "dsh-plugin",
+    "cookie",
+    "startup"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.5"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/<your-name>/dsh-cookie-guard"
+  }
+}
