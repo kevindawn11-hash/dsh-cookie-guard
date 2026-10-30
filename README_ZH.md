@@ -1,5 +1,8 @@
 # dsh-cookie-guard
 
+[![npm](https://img.shields.io/npm/v/dsh-cookie-guard)](https://www.npmjs.com/package/dsh-cookie-guard)
+[![license](https://img.shields.io/npm/l/dsh-cookie-guard)](LICENSE)
+
 一个针对 **DeepSeek Harness Desktop** 的轻量修复包：把桌面端浏览器会话 cookie
 （`dsh-auth-*`）的生命周期从默认 30 天收敛到 7 天，避免历史 cookie 无限累积后
 把请求头撑爆，导致应用启动失败。

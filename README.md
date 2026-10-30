@@ -1,5 +1,8 @@
 # dsh-cookie-guard
 
+[![npm](https://img.shields.io/npm/v/dsh-cookie-guard)](https://www.npmjs.com/package/dsh-cookie-guard)
+[![license](https://img.shields.io/npm/l/dsh-cookie-guard)](LICENSE)
+
 A tiny fix for **DeepSeek Harness Desktop**: it caps the lifetime of the desktop
 browser-session cookies (`dsh-auth-*`) from the default 30 days to 7 days, so
 stale cookies can no longer pile up and overflow the request header — a failure

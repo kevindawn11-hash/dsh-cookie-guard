@@ -1,0 +1,35 @@
+name: Publish
+
+# Publishes to npm via Trusted Publishing (OIDC) — no npm token stored anywhere.
+# Requires a one-time setup on npmjs.com: package → Settings → Trusted Publisher
+# → GitHub Actions, repository `kevindawn11-hash/dsh-cookie-guard`,
+# workflow filename `publish.yml`, environment left empty.
+#
+# Until that is configured this workflow will fail at the publish step.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write # required for OIDC; this is what replaces the npm token
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      # Trusted Publishing needs npm >= 11.5.1, and it needs no NODE_AUTH_TOKEN:
+      # the CLI exchanges the GitHub OIDC token for short-lived registry credentials.
+      - run: npm install -g npm@latest
+      - run: npm --version
+
+      - run: npm publish --provenance --access public
