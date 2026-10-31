@@ -1,6 +1,6 @@
 {
   "name": "dsh-cookie-guard",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Caps DSH desktop browser-session cookie lifetime so stale dsh-auth-* cookies can no longer overflow the request header and break startup (HTTP 431 / \"Web authentication failed\").",
   "type": "module",
   "main": "lib/index.js",
